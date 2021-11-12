@@ -7,9 +7,9 @@ import {
   Link
 } from "react-router-dom";
 import NavBar from './components/NavBar';
-import Home from './pages/home';
-import Customers from './pages/customers';
-import Products from './pages/products';
+import Home from './pages/Home';
+import Customers from './pages/Customers';
+import Products from './pages/Products';
 
 function App() {
   return (<Router>
