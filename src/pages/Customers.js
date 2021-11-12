@@ -1,36 +1,36 @@
 import React from 'react'
 import { useState } from 'react'
 import AddNewCustomerForm from '../components/AddNewCustomerForm'
+import {
+    Switch,
+    Route, Link, useRouteMatch
+} from 'react-router-dom'
+import CustomerService from '../services/CustomerService';
+
 export default function Customers() {
 
-    const [customers, setCustomers] = useState([
-        {
-            id: 1,
-            firstName: 'Ana',
-            lastName: 'Viva',
-        },
-        {
-            id: 2,
-            firstName: 'Marko',
-            lastName: 'Aqua',
-        },
-        {
-            id: 3,
-            firstName: 'Dusan',
-            lastName: 'Voda',
-        }
-    ])
+    let match = useRouteMatch();
+
+    const [customers, setCustomers] = useState(
+        CustomerService.getAll())
 
 
 
 
     const handleRemoveUser = (id) => {
-        setCustomers(customers.filter((customer) => id !== customer.id))
+        const customer = CustomerService.removeCustomer(id)
+
+        if (customer) {
+            setCustomers([...customers, customer])
+        }
     }
 
     const handleSubmit = (newCustomer) => {
+        const customer = CustomerService.addCustomer(newCustomer);
 
-        setCustomers([...customers, { ...newCustomer }])
+        if (customer) {
+            setCustomers([...customers, customer])
+        }
 
     }
 
@@ -45,11 +45,16 @@ export default function Customers() {
 
             <div>
                 <h2>Customers</h2>
+
                 <ul>   {customers.map((customer) => (
-                    <li key={customer.id}>{customer.firstName} {customer.lastName}  <button onClick={() => handleRemoveUser(customer.id)}>Remove user </button></li>
+                    <li key={customer.id}>{customer.firstName} {customer.lastName}  <button onClick={() => handleRemoveUser(customer.id)}>Remove user </button>
+
+                        <Link to={`${match.path}/${customer.id}`}> Latest Purchases </Link >
+                    </li>
 
 
                 ))}  </ul>
+
             </div >
 
         </div>
