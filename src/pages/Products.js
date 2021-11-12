@@ -1,9 +1,24 @@
 import React from 'react'
-import AppProducts from '../components/AppProducts'
+import { useState } from 'react'
+import ProductService from '../services/ProductService'
 export default function Products() {
+
+    const [products, setProducts] = useState(
+        ProductService.getAll())
     return (
         <div>
-            <AppProducts />
+            <h2>Products</h2>
+            <ul>   {products.map((product) => (
+                <li key={product.id}>{product.name}
+
+
+                </li>
+
+
+            ))}  </ul>
+
+
+
         </div>
     )
 }
