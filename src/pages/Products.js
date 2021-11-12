@@ -5,17 +5,27 @@ export default function Products() {
 
     const [products, setProducts] = useState(
         ProductService.getAll())
+
+    const [searchField, setSearchField] = useState('')
+
+    const handleSearch = (e) => {
+        setSearchField(e.target.value)
+
+
+    }
     return (
         <div>
+            <h3>Search by name </h3>
+            <input value={searchField} onChange={handleSearch} />
             <h2>Products</h2>
-            <ul>   {products.map((product) => (
+            <ul>   {products.filter((product) => product.name.startsWith(searchField)).map((product) => (
                 <li key={product.id}>{product.name}
 
 
                 </li>
 
-
             ))}  </ul>
+
 
 
 
