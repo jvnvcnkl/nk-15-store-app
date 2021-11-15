@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import ProductService from '../services/ProductService'
+import { Link } from 'react-router-dom'
+import { useRouteMatch } from 'react-router'
 export default function Products() {
 
+    let match = useRouteMatch();
 
     // const [buttonState,setButtonSate]= useState({state:false,productId:0});
 
@@ -51,7 +54,7 @@ export default function Products() {
             <button onClick={() => handleIncrement(product.id)}>+</button>
             <button  onClick={() => handleDecrement(product.id)} disabled={product.outOfStock}>-</button>
             {product.onCount}
-
+                <Link to={`${match.path}/${product.id}`}>Buy this product</Link>
 
                 </li>
 

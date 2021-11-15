@@ -5,18 +5,18 @@ class ProductService {
         {
             id: 1,
             name: 'Laptop',
-            onCount: 0,
-            outOfStock:true,
+            onCount: 4,
+            outOfStock:false,
         }, {
             id: 2,
             name: 'Mobile phone',
-            onCount: 0,
+            onCount: 5,
             outOfStock:false
         },
         {
             id: 3,
             name: 'Car',
-            onCount: 0,
+            onCount: 10,
             outOfStock:false
         }
 
@@ -27,6 +27,9 @@ class ProductService {
 
     getAll() {
         return [...this.products]
+    }
+    getProduct(id) {
+        return this.products.find((product) => id == product.id)
     }
 
     setCountIncrease(id){
@@ -41,8 +44,9 @@ class ProductService {
         let product =   this.products.find((product) => id == product.id)
         if(product.onCount === 0) {
             product.outOfStock = true
+        }else{
+            product.onCount --
         }
-        product.onCount --
 
         return product
     }

@@ -11,7 +11,7 @@ export default function CustomerDetailed() {
             <h3>Customer </h3>
             Full Name: {customer.firstName} {customer.lastName}
             <ul>
-                <h4>Products :</h4>{customer.products.map((product) => <li> {product}</li>)}
+                <h4>Products :</h4>{customer.productsBought.map((product) => <li> {product}</li>)}
             </ul>
         </div>
     )

@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Customers from './pages/Customers';
 import Products from './pages/Products';
 import CustomerDetailed from './pages/CustomerDetailed';
+import ProductDetailed from './pages/ProductDetailed'
 
 function App() {
   return (<Router>
@@ -20,11 +21,14 @@ function App() {
       <Route exact path="/customers">
         <Customers />
       </Route>
-      <Route path="/products">
+      <Route exact path="/products">
         <Products />
       </Route>
       <Route path={`/customers/:customerId`}>
         <CustomerDetailed />
+      </Route>
+      <Route path={`/products/:productId`}>
+        <ProductDetailed />
       </Route>
       <Route exact path="/">
         <Home />

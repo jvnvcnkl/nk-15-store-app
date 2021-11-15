@@ -5,19 +5,19 @@ class CustomerService {
         id: 1,
         firstName: 'Ana',
         lastName: 'Viva',
-        products: [],
+        productsBought: [],
     },
     {
         id: 2,
         firstName: 'Marko',
         lastName: 'Aqua',
-        products: [],
+        productsBought: [],
     },
     {
         id: 3,
         firstName: 'Dusan',
         lastName: 'Voda',
-        products: [],
+        productsBought: [],
     }
     ]
 
@@ -35,13 +35,19 @@ class CustomerService {
     }
 
     addCustomer(newCustomer) {
-        const customer = { ...newCustomer, id: CustomerService.consumerId, products: [] }
+        const customer = { ...newCustomer, id: CustomerService.consumerId, productsBought: [] }
         this.customers.push(customer)
         CustomerService.consumerId++;
 
         return customer
 
     }
+
+    addProduct(){
+        //
+    }
+
+    // full name getter
 
 }
 
